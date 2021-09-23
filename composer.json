@@ -1,0 +1,49 @@
+{
+    "name": "spinbits/baselinker-sdk",
+    "type": "library",
+    "description": "PHP integration with Baselinker https://api.baselinker.com/",
+    "keywords": [
+        "spinbits",
+        "baselinker sdk"
+    ],
+    "homepage": "https://github.com/spinbits/baselinker-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jakub Lech",
+            "email": "info@smartbyte.pl",
+            "homepage": "https://github.com/spinbits",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : ">=8.0",
+        "squizlabs/php_codesniffer": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spinbits\\BaselinkerSdk\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spinbits\\BaselinkerSdk\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs src tests",
+        "fix-style": "phpcbf src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

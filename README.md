@@ -7,10 +7,11 @@
 
 ## Description
 
-This package is core implementation of BaseLinker API [https://connectors.baselinker.com/exec/docs/index.php](https://connectors.baselinker.com/exec/docs/index.php).
-Please get familiar with above API specification before you proceed with using this package.
+This package is implementation of communication with BaseLinker Connector ("integration file"). For further details please refer to https://connectors.baselinker.com/exec/docs/index.php . 
 
-This package provides core skeleton ready for extension to implement your own ecommerce action handlers.
+This package provides only core action handler. It's ready to be extended with your own ecommerce (Sylius, or other php-based products) action handlers.
+
+For integration with Sylius, please go to https://github.com/spinbits/sylius-baselinker-plugin
 
 ## Install
 
@@ -83,7 +84,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email info@smartbyte.pl instead of using the issue tracker.
+If you discover any security related issues, please email office@spinbits.io instead of using the issue tracker.
 
 ## Credits
 

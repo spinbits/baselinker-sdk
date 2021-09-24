@@ -14,10 +14,9 @@ use Spinbits\BaselinkerSdk\Handler\HandlerInterface;
 use Spinbits\BaselinkerSdk\RequestHandler;
 use Spinbits\BaselinkerSdk\Rest\Input;
 
-class SupportedMethodsAction implements HandlerInterface
+class SupportedMethodsActionHandler implements HandlerInterface
 {
-    /** @var RequestHandler */
-    private $requestHandler;
+    private RequestHandler $requestHandler;
 
     /**
      * @param RequestHandler $requestHandler
@@ -27,6 +26,9 @@ class SupportedMethodsAction implements HandlerInterface
         $this->requestHandler = $requestHandler;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function handle(Input $input): array
     {
         return $this->requestHandler->supportedActions();

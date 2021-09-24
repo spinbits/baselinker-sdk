@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Spinbits\BaselinkerSdk\Model;
 
+use Spinbits\BaselinkerSdk\Rest\Input;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class OrderAddModel extends AbstractDto
@@ -66,7 +67,7 @@ class OrderAddModel extends AbstractDto
     protected ?string $service_account = null; //
     protected ?string $client_login = null; //
 
-    public function __construct(array $input)
+    public function __construct(Input $input)
     {
         $instance = $this;
         $this->customHandlers['products'] = function ($key, $value) use ($instance) {
@@ -76,12 +77,13 @@ class OrderAddModel extends AbstractDto
         parent::__construct($input);
     }
 
-    protected function mapProducts(string $value)
+    protected function mapProducts(string $value): void
     {
         $data = json_decode($value, true, 512, JSON_THROW_ON_ERROR);
         $productsList = [];
         foreach ($data as $productData) {
-            $productsList[] = new ProductModel($productData);
+            $input = new Input($productData);
+            $productsList[] = new ProductModel($input);
         }
         $this->products = $productsList;
     }

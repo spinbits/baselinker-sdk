@@ -16,28 +16,59 @@ class Input
     private const POST_PASSWORD_FIELD = 'bl_pass';
     private const POST_ACTION_FIELD = 'action';
 
-    /** @var ParameterBag */
-    public $body;
+    public array $parameters;
 
     /**
      * @param array<string, mixed> $postData
      */
     public function __construct(array $postData)
     {
-        $this->body = new ParameterBag($postData);
+        $this->parameters = $postData;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function action(): ?string
     {
-        return $this->body->get(self::POST_ACTION_FIELD);
+        return $this->get(self::POST_ACTION_FIELD);
     }
 
+    /**
+     * @return string|null
+     */
     public function password(): ?string
     {
-        return $this->body->get(self::POST_PASSWORD_FIELD);
+        return $this->get(self::POST_PASSWORD_FIELD);
 
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function all(): array
+    {
+        return $this->parameters;
+    }
+
+    /**
+     * @param string $key
+     * @param mixed  $default
+     *
+     * @return mixed
+     */
+    public function get(string $key, $default = null)
+    {
+        return $this->has($key) ? $this->parameters[$key] : $default;
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return bool
+     */
+    public function has(string $key): bool
+    {
+        return array_key_exists($key, $this->parameters);
     }
 }

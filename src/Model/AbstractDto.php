@@ -11,16 +11,17 @@ declare(strict_types=1);
 namespace Spinbits\BaselinkerSdk\Model;
 
 use \ReflectionClass;
+use Spinbits\BaselinkerSdk\Rest\Input;
 
 abstract class AbstractDto
 {
     protected array $customHandlers = [];
-    private array $_originalData;
+    protected Input $input;
 
-    public function __construct(array $input)
+    public function __construct(Input $input)
     {
-        $this->_originalData = $input;
-        foreach ($input as $key => $value) {
+        $this->input = $input;
+        foreach ($input->all() as $key => $value) {
             if (isset($this->customHandlers[$key])) {
                 $this->customHandlers[$key]($key, $value);
                 continue;
@@ -30,9 +31,17 @@ abstract class AbstractDto
         }
     }
 
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @return bool|float|int|string
+     */
     private function cast(string $name, $value)
     {
         $reflection = new ReflectionClass($this);
+        if (!$reflection->hasProperty($name)) {
+            return null;
+        }
         switch ($reflection->getProperty($name)->getType()->getName()) {
             case 'bool':
                 return (bool) $value;
@@ -44,10 +53,5 @@ abstract class AbstractDto
             default:
                 return (string) $value;
         }
-    }
-
-    public function getOriginalData(): array
-    {
-        return $this->_originalData;
     }
 }

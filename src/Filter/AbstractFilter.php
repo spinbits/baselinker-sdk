@@ -24,7 +24,7 @@ class AbstractFilter
 
     protected function get(string $parameter, $default = null)
     {
-        return $this->input->query->get($parameter, $default);
+        return $this->input->get($parameter, $default);
     }
 
     public function hasCustomFilter(string $filterName): bool
@@ -37,8 +37,8 @@ class AbstractFilter
         $this->customFilter[$filterName] = $value;
     }
 
-    public function getCustomFilter(string $filterName)
+    public function getCustomFilter(string $filterName, $default = null)
     {
-        return $this->customFilter[$filterName];
+        return $this->customFilter[$filterName] ?? $default;
     }
 }

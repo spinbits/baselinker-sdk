@@ -55,9 +55,8 @@ class ProductListFilter extends AbstractFilter implements PaginatorFilterInterfa
     {
         $list = (string) $this->get('filter_ids_list');
 
-        return explode(",", $list);
+        return strlen($list) > 0 ? explode(",", $list) : [];
     }
-
 
     public function hasCategory(): bool
     {
@@ -103,10 +102,10 @@ class ProductListFilter extends AbstractFilter implements PaginatorFilterInterfa
 
     public function hasQuantityTo(): bool
     {
-        return null === $this->hasQuantityTo();
+        return null !== $this->getQuantityTo();
     }
 
-    public function getQuantityTo(): float
+    public function getQuantityTo(): ?float
     {
         return $this->getNullOrFloat('filter_quantity_to');
     }
@@ -119,12 +118,12 @@ class ProductListFilter extends AbstractFilter implements PaginatorFilterInterfa
     public function getSort(): array
     {
         $filter = (string) $this->get('filter_sort');
-        return explode(" ", trim($filter));
+        return strlen($filter) > 0 ? explode(" ", trim($filter)) : [];
     }
 
     private function getNullOrFloat(string $parameter): ?float
     {
         $filter = $this->get($parameter);
-        return null === $filter ? null : (float) $filter;
+        return (null === $filter || '' === $filter ) ? null : (float) $filter;
     }
 }

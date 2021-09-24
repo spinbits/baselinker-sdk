@@ -8,19 +8,19 @@
 
 declare(strict_types=1);
 
-namespace Spinbits\BaselinkerSdk\Handler\Common;
+namespace Spinbits\BaselinkerSdk\Handler\Sylius;
 
+use Sylius\Component\Core\OrderCheckoutStates;
 use Spinbits\BaselinkerSdk\Handler\HandlerInterface;
 use Spinbits\BaselinkerSdk\Rest\Input;
 
-class FileVersionActionHandler implements HandlerInterface
+class StatusesListActionHandler implements HandlerInterface
 {
     public function handle(Input $input): array
     {
         return [
-            'platform' => "Common spinbits baslinker plugin",
-            'version' => "4.0.0",
-            'standard' => 4,
+            OrderCheckoutStates::STATE_CART => 'Koszyk - w trakcie zamawiania',
+            OrderCheckoutStates::STATE_COMPLETED => 'Ukończone',
         ];
     }
 }

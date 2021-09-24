@@ -13,7 +13,6 @@ namespace Spinbits\BaselinkerSdk;
 use Spinbits\BaselinkerSdk\Handler\HandlerInterface;
 use Spinbits\BaselinkerSdk\Rest\Exception\ForbiddenException;
 use Spinbits\BaselinkerSdk\Rest\Exception\InvalidArgumentException;
-use Spinbits\BaselinkerSdk\Rest\Exception\MissingPasswordException;
 use Spinbits\BaselinkerSdk\Rest\Exception\RestException;
 use Spinbits\BaselinkerSdk\Rest\Input;
 use Spinbits\BaselinkerSdk\Rest\Response;
@@ -91,7 +90,7 @@ class RequestHandler
     private function checkPassword(Input $input): void
     {
         if (null === $input->password()) {
-            throw new MissingPasswordException("Missing password parameter", );
+            throw new InvalidArgumentException("Missing password parameter", );
         }
         if ($input->password() !== $this->password) {
             throw new ForbiddenException("Wrong password");

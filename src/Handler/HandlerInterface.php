@@ -13,5 +13,9 @@ use Spinbits\BaselinkerSdk\Rest\Input;
 
 interface HandlerInterface
 {
+    /**
+     * @param Input $input
+     * @return array
+     */
     public function handle(Input $input): array;
 }

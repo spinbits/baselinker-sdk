@@ -15,8 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ProductModel extends AbstractDto
 {
     protected ?string $id = null;
-    /** @Assert\NotBlank */
-    protected string $variant_id;
+    protected ?string $variant_id;
     protected ?string $sku = null;
     protected ?string $name = null;
     protected ?int $price = null;
@@ -29,7 +28,7 @@ class ProductModel extends AbstractDto
         return $this->id;
     }
 
-    public function getVariantId(): string
+    public function getVariantId(): ?string
     {
         return $this->variant_id;
     }

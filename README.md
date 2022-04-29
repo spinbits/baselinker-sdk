@@ -50,12 +50,12 @@ $input = new Spinbits\BaselinkerSdk\Rest\Input($request->request->all());
 
 In order to process incoming request you can just run:
 ``` php
-$respone = $baselinkerHandler->handle($input);
+$response = $baselinkerHandler->handle($input);
 ```
 
 The result to return controller response is:
 ``` php
-$respone->getContent();
+$response->getContent();
 /* returns example response:
 [
     'platform' => "Common spinbits baslinker plugin",

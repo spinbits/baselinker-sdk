@@ -5,6 +5,9 @@
 [![Build Status][ico-travis]][link-travis]
 [![Total Downloads][ico-downloads]][link-downloads]
 
+## Need help ?
+Drop us a message hello@spinbits.io
+
 ## Description
 
 This package is implementation of communication with BaseLinker Connector ("integration file"). For further details please refer to https://connectors.baselinker.com/exec/docs/index.php . 
@@ -85,12 +88,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Security
 
 If you discover any security related issues, please email office@spinbits.io instead of using the issue tracker.
-
-## Credits
-
-- [Marcin Hubert][link-author]
-- [Jakub Lech][link-author]
-- [All Contributors][link-contributors]
 
 ## License
 

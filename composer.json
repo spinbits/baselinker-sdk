@@ -8,12 +8,9 @@
     ],
     "homepage": "https://github.com/spinbits/baselinker-sdk",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Jakub Lech",
-            "email": "info@smartbyte.pl",
-            "homepage": "https://github.com/spinbits",
-            "role": "Developer"
+    "authors": [  {
+            "name": "Spinbits",
+            "homepage": "https://spinbits.io"
         }
     ],
     "require": {
